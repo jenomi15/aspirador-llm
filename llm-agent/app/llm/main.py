@@ -1,35 +1,26 @@
 # main.py
 
-from langchain.agents import initialize_agent
-from langchain.agents import AgentType
 
+from langchain.agents import create_agent
 from llm.llm import llm
 from tools  import action
-
-from llm  import AgentState
-
-state: AgentState = {
-    "user_input": "Quanto é 10 + 20?",
-    "chat_history": [],
-    "intermediate_steps": [],
-    "final_response": ""
-}
-
 
 tools = [
     
     action
 ]
 
-agent = initialize_agent(
+agent = create_agent(
+    system_prompt="""voçê é um agente limpador de salas, seu objetivo é limpar todas as salas possíveis.
+                      para isso, voçê tem acesso a uma tool de "action" que pode ser ativada para fazer ações de limpeza.
+                     As salas só precisam ser limpas uma vez, nada mais, cada sala tem um nome único.""",
     tools=tools,
     llm=llm,
-    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-    verbose=True
+    
 )
 
 response = agent.invoke(
-    "Quanto é 25 * 40 + 10?"
+    ""
 )
 
 print(response)

@@ -5,12 +5,6 @@ from langchain.tools import tool
 @tool
 def action(expression: str) -> str:
     """
-    Realiza cálculos matemáticos simples.
+    Limpa uma sala.
     """
 
-    try:
-        result = eval(expression)
-        return str(result)
-
-    except Exception as e:
-        return f"Erro: {str(e)}"

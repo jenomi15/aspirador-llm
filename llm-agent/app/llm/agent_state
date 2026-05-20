@@ -2,13 +2,11 @@
 
 from typing import TypedDict, List, Dict, Any
 
-
+class Sala(TypedDict):
+    nome: str
+    estado: str
+    
 class AgentState(TypedDict):
+    salas :list[Sala]
 
-    user_input: str
-
-    chat_history: List[Dict[str, str]]
-
-    intermediate_steps: List[Any]
-
-    final_response: str
+  
