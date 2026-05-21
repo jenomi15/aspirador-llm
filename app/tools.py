@@ -1,28 +1,33 @@
-# tools/calculator_tool.py
+# tools.py
 from langchain.tools import tool
-from environment.environment import environment
+# CORREÇÃO: Importação direta do arquivo environment.py local
+from app.environment import environment
+
 @tool
-def action(expression: str) -> str:
+def action() -> str:
     """
     Limpa uma sala.
     """
     return environment.limpar_quarto()
+
 @tool
-def see(expression: str) -> str:
+def see() -> str:
     """
     Vê o estado atual da sala.
     """
     return environment.ver_quarto_atual()
+
 @tool
 def move(direcao: str) -> str:
     """
-    Vê o estado atual da sala.
+    Move o robô para outra sala (recebe 'MOVELEFT' ou 'MOVERIGHT').
     """
     return environment.mover(direcao)
 
 @tool
-def finished(_: str) -> str:
+def finished() -> str:
     """
     Verifica se todas as salas estão limpas.
     """
+    # CORREÇÃO: Adicionado o retorno que faltava
     return str(environment.terminou())
