@@ -1,10 +1,12 @@
 class Environment:
     def __init__(self):
-        self.quartos = ["L", "R"]
+        self.quartos = ["L", "R" ]
 
         self.estado = {
             "L": "sujo",
-            "R": "sujo"
+            "R": "sujo",
+           
+           
         }
         self.posicaoAgente = 0
 
